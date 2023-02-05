@@ -1,0 +1,18 @@
+Spring Security Notes
+========================
+whenever client give the request to the server in between therse process request has to intercept with security filter chain for the authentication and authorisation.
+
+There is a filter called "UsernamePasswordAuthenticationFilter" which will extract the username and password from the user request and build the "Authentication Ojbect"
+
+Here Authentication is an interface and its implementation class name is "UsernamePasswordAuthenticationToken".
+
+--after creating the object of Authentication, this filter will call a method of AuthenticationManager(I) called:
+
+Authentication authenticate(Authentication auth);
+
+--Here AuthenticationManager is an interface and the implementation class name is "ProviderManager"
+
+--This Authenticate(-) method will check with various suppoted AuthenticationProvider and then this authenticate(-) method will call another
+
+Authentication authenticate(Authentication auth);
+method on the implementation of appropriate AuthenticationProvider.
