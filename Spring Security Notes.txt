@@ -16,3 +16,27 @@ Authentication authenticate(Authentication auth);
 
 Authentication authenticate(Authentication auth);
 method on the implementation of appropriate AuthenticationProvider.
+
+-- The Default implementation of AuthenticationProvider is DAOAuthenticationProvider.
+Note: we can define our own AuthenticationProvider Implmentation also.
+
+this Default DAOAuthenticationProvider will take the help of UserDetailsService.
+
+--inside the UserDetailsService interfacem there is only one abstract method called: UserDetails loadUserByUsername(String username);
+--we can implement this interface and return the UserDetails object based on our requirement.
+
+--By Default Spring Security f/w has provided an implementation class of this UserDetailService interface which is InMemoryUserDetailsService".
+
+Spring Security has provided the implementation of UserDetails also, the name of this implementation class is "User"
+
+--developer can implement this UserDetails interface and customize this User details object also.
+
+--Once AuthenticationManager will get the Authentication object after successfull authentication then AM will population the  Principal object inside this Authentication object and keep this Authentication object inside the SecurityContext object.
+
+Principle object will represent the Authenticated User.
+
+BasicAuthenticationFilter
+============================
+this filter is responsible for proecessing any request that has HTTP request header of Authorization with an authentication shceme of Basic and a Base64-encoded username:password token. For example, to authenticate user "bob" with password "1234" the following header would be presented:
+
+Authorization: Basic QWxhZGRpbjpvcGVulHNIjHSKJJD--> this is base64 encoded varsion/formate/language

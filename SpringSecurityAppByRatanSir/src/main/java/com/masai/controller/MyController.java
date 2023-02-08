@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyController {
 
-	@GetMapping("/hello")
+	@GetMapping("/hello1")
 	public String sayHello() {
 		return "Welcome to the Spring Security Method 1";
 	}
